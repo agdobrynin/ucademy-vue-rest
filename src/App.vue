@@ -1,6 +1,8 @@
 <template lang="pug">
-    .container.pt-3 #[h3.alert.alert-info Add new car]
-        form#formCar(@submit.prevent="")
+    .container.pt-3
+        form(@submit.prevent="")
+            h3(v-if="!id").alert.alert-info Add new car
+            h3(v-if="id").alert.alert-success Update car
             input(type="hidden" name="id" v-model="id")
             .form-group
                 label Mark
@@ -71,7 +73,15 @@
                 this.resourceStatus.message = "";
             },
             loadCars() {
-                this.resource.get().then( response => response.json()).then( cars => this.cars = cars);
+                this.resource.get()
+                    .then( response => response.json())
+                    .then( cars => {
+                        this.cars = cars;
+                        this.successResourceStatus();
+                    })
+                    .catch ( response => {
+                        this.failResourceStatus(response.bodyText);
+                    });
             },
             addCar(event) {
                 const car = this.formDataToJson(new FormData(event.target.form));
@@ -88,6 +98,9 @@
                 this.resource.update({id: car.id}, car).then( ()=> {
                     this.loadCars();
                     this.emptyForm();
+                    this.successResourceStatus();
+                }).catch ( response => {
+                    this.failResourceStatus(response.bodyText);
                 });
             },
             deleteCar(id) {
@@ -105,9 +118,12 @@
                     this.model = car.model;
                     this.mark = car.mark;
                     this.yearRelease = car.yearRelease;
+                    this.successResourceStatus();
+                }).catch ( response => {
+                    this.failResourceStatus(response.bodyText);
                 });
 
-                const container = this.$el.querySelector("#formCar");
+                const container = this.$el.querySelector("form");
                 container.scrollIntoView();
             },
         }
