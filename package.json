@@ -1,5 +1,5 @@
 {
-  "name": "vue-resource",
+  "name": "vue-rest",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,9 +8,9 @@
     "json": "json-server --watch db.json"
   },
   "dependencies": {
-    "axios": "^0.19.1",
     "core-js": "^3.4.4",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-resource": "^1.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

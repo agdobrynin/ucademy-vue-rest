@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import Axios from 'axios'
+import vueResource from 'vue-resource';
 import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
-Axios.defaults.baseURL = process.env.VUE_APP_ENDPOINT;
-Vue.prototype.$http = Axios;
 
 Vue.config.productionTip = false;
+Vue.use(vueResource);
+Vue.http.options.root = process.env.VUE_APP_ENDPOINT;
 
 new Vue({
   render: h => h(App),

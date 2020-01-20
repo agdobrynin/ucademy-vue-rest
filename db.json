@@ -1,7 +1,34 @@
 {
   "cars": [
-    { "id": 1, "mark": "Fiat", "model": "Grande Punto" },
-    { "id": 2, "mark": "Lexus", "model": "RX 350" },
-    { "id": 3, "mark": "Ferrari", "model": "F490" }
+    {
+      "id": 1,
+      "mark": "Fiat",
+      "model": "Punto",
+      "yearRelease": "2013"
+    },
+    {
+      "id": 2,
+      "mark": "Fiat",
+      "model": "Brava",
+      "yearRelease": "2009"
+    },
+    {
+      "id": 3,
+      "mark": "Mazda",
+      "model": "Model 3",
+      "yearRelease": "2016"
+    },
+    {
+      "mark": "Subary",
+      "model": "Impreza 9",
+      "yearRelease": "2017",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "mark": "Lada",
+      "model": "Vesta vagon SW",
+      "yearRelease": "2018"
+    }
   ]
 }
